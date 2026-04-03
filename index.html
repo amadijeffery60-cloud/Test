@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeffery Can Do It Too!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --purple: #6c2bd9;
+      --purple-light: #9b5de5;
+      --pink: #f72585;
+      --yellow: #fee440;
+      --cyan: #00f5d4;
+      --dark: #1a1a2e;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2.5rem;
+      background: rgba(26, 26, 46, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--purple);
+    }
+
+    .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.5rem;
+      color: var(--yellow);
+      text-shadow: 2px 2px 0 var(--pink);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+
+    nav ul a:hover {
+      color: var(--cyan);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      background: linear-gradient(135deg, var(--dark) 0%, #16213e 50%, #0f3460 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,43,217,0.35) 0%, transparent 70%);
+      top: -150px;
+      right: -150px;
+      animation: pulse 5s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(247,37,133,0.25) 0%, transparent 70%);
+      bottom: -100px;
+      left: -100px;
+      animation: pulse 7s ease-in-out infinite reverse;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--pink);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1.2rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+      animation: bounceIn 0.8s ease forwards;
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    .hero h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 1.1;
+      color: var(--yellow);
+      text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 rgba(247,37,133,0.3);
+      margin-bottom: 1rem;
+      animation: slideUp 0.8s 0.2s ease both;
+    }
+
+    .hero h1 span {
+      color: var(--cyan);
+      text-shadow: 4px 4px 0 var(--purple);
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      max-width: 600px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+      animation: slideUp 0.8s 0.4s ease both;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: slideUp 0.8s 0.6s ease both;
+    }
+
+    .btn {
+      padding: 0.85rem 2.2rem;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: var(--white);
+    }
+
+    .btn-secondary {
+      background: var(--yellow);
+      color: var(--dark);
+    }
+
+    .floating-emojis {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: floatUp linear infinite;
+      opacity: 0.6;
+    }
+
+    .emoji:nth-child(1)  { left: 5%;  animation-duration: 8s;  animation-delay: 0s; }
+    .emoji:nth-child(2)  { left: 15%; animation-duration: 10s; animation-delay: 1s; }
+    .emoji:nth-child(3)  { left: 25%; animation-duration: 9s;  animation-delay: 2s; }
+    .emoji:nth-child(4)  { left: 38%; animation-duration: 11s; animation-delay: 0.5s; }
+    .emoji:nth-child(5)  { left: 55%; animation-duration: 7s;  animation-delay: 3s; }
+    .emoji:nth-child(6)  { left: 68%; animation-duration: 9s;  animation-delay: 1.5s; }
+    .emoji:nth-child(7)  { left: 78%; animation-duration: 10s; animation-delay: 0.8s; }
+    .emoji:nth-child(8)  { left: 88%; animation-duration: 8s;  animation-delay: 2.5s; }
+
+    @keyframes floatUp {
+      0%   { transform: translateY(110vh) rotate(0deg); opacity: 0.6; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ── STATS ── */
+    .stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 4rem 2rem;
+      background: var(--purple);
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 1.5rem 2.5rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 1.5rem;
+      border: 2px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s;
+      min-width: 160px;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .stat-card .number {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .stat-card .label {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      margin-top: 0.4rem;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      padding: 6rem 2rem;
+      background: linear-gradient(180deg, var(--dark) 0%, #16213e 100%);
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--cyan);
+      margin-bottom: 0.5rem;
+      text-shadow: 3px 3px 0 var(--purple);
+    }
+
+    .section-sub {
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(108,43,217,0.2), rgba(247,37,133,0.15));
+      border: 2px solid rgba(108,43,217,0.4);
+      border-radius: 2rem;
+      padding: 2.5rem 2rem;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) rotate(-1deg);
+      border-color: var(--cyan);
+      box-shadow: 0 20px 50px rgba(0,245,212,0.15);
+    }
+
+    .card-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--yellow);
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 6rem 2rem;
+      background: var(--purple);
+      text-align: center;
+    }
+
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .step {
+      flex: 1 1 200px;
+      max-width: 220px;
+      text-align: center;
+    }
+
+    .step-num {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--yellow);
+      color: var(--dark);
+      font-size: 1.5rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      box-shadow: 0 0 0 6px rgba(254,228,64,0.25);
+    }
+
+    .step h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .step p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      padding: 6rem 2rem;
+      background: linear-gradient(180deg, #16213e, var(--dark));
+      text-align: center;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .testi-card {
+      background: rgba(255,255,255,0.05);
+      border: 2px solid rgba(247,37,133,0.3);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      text-align: left;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .testi-card:hover {
+      transform: scale(1.03);
+      border-color: var(--pink);
+    }
+
+    .stars {
+      color: var(--yellow);
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .testi-card p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .testi-author {
+      font-weight: 700;
+      color: var(--cyan);
+      font-size: 0.9rem;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, var(--pink), var(--purple), var(--dark));
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: var(--yellow);
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 550px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d0d1a;
+      text-align: center;
+      padding: 2rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+      border-top: 2px solid var(--purple);
+    }
+
+    footer span {
+      color: var(--pink);
+    }
+
+    /* ── WIGGLE ANIMATION ── */
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-3deg); }
+      50%       { transform: rotate(3deg); }
+    }
+
+    .wiggle:hover {
+      animation: wiggle 0.3s ease-in-out infinite;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Jeffery</div>
+    <ul>
+      <li><a href="#services">What I Do</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#cta">Hire Me</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="floating-emojis" aria-hidden="true">
+      <span class="emoji">💰</span>
+      <span class="emoji">🚀</span>
+      <span class="emoji">✨</span>
+      <span class="emoji">💸</span>
+      <span class="emoji">🎯</span>
+      <span class="emoji">🔥</span>
+      <span class="emoji">💡</span>
+      <span class="emoji">🎉</span>
+    </div>
+    <div class="hero-badge">Yes, Really.</div>
+    <h1>Jeffery Can <span>Do It</span> Too!</h1>
+    <p>Marketing, money moves, and major vibes — Jeffery's got the skills, the drive, and zero chill when it comes to your success.</p>
+    <div class="btn-group">
+      <a href="#services" class="btn btn-primary">See What's Poppin'</a>
+      <a href="#cta" class="btn btn-secondary">Let's Get It!</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat-card">
+      <div class="number">500+</div>
+      <div class="label">Happy Clients</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">$2M+</div>
+      <div class="label">Revenue Generated</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">99%</div>
+      <div class="label">Would Hire Again</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">1</div>
+      <div class="label">Jeffery (Priceless)</div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-title">What Jeffery Does</div>
+    <p class="section-sub">Spoiler: a lot.</p>
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">📱</span>
+        <h3>Social Media Sorcery</h3>
+        <p>TikTok, Instagram, X — Jeffery turns your feed into a money magnet with content that actually slaps.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📈</span>
+        <h3>Money Mindset Coaching</h3>
+        <p>Broke era is cancelled. Jeffery helps you rewire your brain for wealth, investing, and boss-level decisions.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🎯</span>
+        <h3>Brand Strategy</h3>
+        <p>Your brand should scream "I'm that girl/guy." Jeffery builds strategies so iconic they go viral on their own.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">✍️</span>
+        <h3>Copywriting That Converts</h3>
+        <p>Words that make people click, buy, and tell their friends. Jeffery's copy doesn't miss.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📧</span>
+        <h3>Email Marketing</h3>
+        <p>Not your grandma's newsletter. Jeffery crafts email sequences that feel personal and print money.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌐</span>
+        <h3>Website Glow-Ups</h3>
+        <p>Ugly websites lose sales. Jeffery makes yours so fire, visitors stay, scroll, and spend.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-title">How It Works</div>
+    <p class="section-sub">Three easy steps. Zero headaches.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Slide Into DMs</h4>
+        <p>Hit Jeffery up and tell him about your goals, your vibe, and your budget (no judgment).</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Get a Game Plan</h4>
+        <p>Jeffery cooks up a custom strategy hotter than your fave playlist. No cookie-cutter stuff.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Watch It Pop Off</h4>
+        <p>Sit back (or celebrate wildly) as the results roll in. Results not typical — actually, yes they are.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Tell Everyone</h4>
+        <p>You'll be so impressed you'll be tagging Jeffery in every post. We welcome it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-title">The Reviews Are In</div>
+    <p class="section-sub">Real people. Real results. Real hype.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"I was skeptical but Jeffery 10x'd my email list in 60 days. My bank account is shook."</p>
+        <div class="testi-author">— Maya R., Lifestyle Blogger</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Jeffery's energy is contagious and his strategy is LEGIT. Best investment I made this year."</p>
+        <div class="testi-author">— Darius K., Fitness Coach</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Went from 200 followers to 20K in three months. The algorithm fears Jeffery and so do my competitors."</p>
+        <div class="testi-author">— Priya T., Small Business Owner</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="cta">
+    <h2 class="wiggle">Ready to Glow Up?</h2>
+    <p>Stop waiting for the right moment — Jeffery IS the right moment. Let's build something legendary together.</p>
+    <div class="btn-group" style="justify-content:center;">
+      <a href="mailto:hello@jefferycandoittoo.com" class="btn btn-secondary">Book Jeffery Now!</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Made with <span>&#10084;</span> and a whole lot of hustle &mdash; &copy; 2026 <span>Jeffery Can Do It Too</span>. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
